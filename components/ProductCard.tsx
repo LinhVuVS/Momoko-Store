@@ -21,7 +21,7 @@ const ProductCard = ({ product }: { product: ProductType }) => {
         <p className="text-base-bold truncate ">{product.title}</p>
         <p className="text-small-medium text-grey-2">{product.category}</p>
         <div className="flex justify-between items-center">
-          <p>{product.price} đ</p>
+          <p>{product.price.toLocaleString("vi-VN")} đ</p>
           <HeartFavorite product={product}/>
         </div>
       </div>

@@ -3,6 +3,7 @@
 import { useState } from "react";
 import HeartFavorite from "./HeartFavorite";
 import { MinusCircle, PlusCircle } from "lucide-react";
+import useCart from "@/lib/hooks/useCart";
 
 const ProductInfo = ({ productInfo }: { productInfo: ProductType }) => {
   const [selectedColor, setSelectedColors] = useState<string>(
@@ -14,6 +15,8 @@ const ProductInfo = ({ productInfo }: { productInfo: ProductType }) => {
 
   const [quantity, setQuantity] = useState<number>(1);
 
+  const cart = useCart();
+
   return (
     <div className="max-w-[400px] flex flex-col gap-4">
       <div className="flex justify-between items-center">
@@ -24,7 +27,9 @@ const ProductInfo = ({ productInfo }: { productInfo: ProductType }) => {
         <p className="text-base-medium text-grey-2">Category </p>
         <p className="text-base-bold">{productInfo.category}</p>
       </div>
-      <p className="text-heading3-bold">{productInfo.price.toLocaleString('vi-VN')} đ</p>
+      <p className="text-heading3-bold">
+        {productInfo.price.toLocaleString("vi-VN")} đ
+      </p>
       <div className="flex gap-2">
         <p className="text-base-medium text-grey-2">Description</p>
         <p className="text-small-medium">{productInfo.description}</p>
@@ -81,7 +86,17 @@ const ProductInfo = ({ productInfo }: { productInfo: ProductType }) => {
           />
         </div>
       </div>
-      <button className="outline text-base-bold py-3 rounded-lg hover:bg-black hover:text-white">
+      <button
+        className="outline text-base-bold py-3 rounded-lg hover:bg-black hover:text-white"
+        onClick={() => {
+          cart.addItem({
+            item: productInfo,
+            quantity,
+            color: selectedColor,
+            size: selectedSize,
+          });
+        }}
+      >
         Add To Cart
       </button>
     </div>
