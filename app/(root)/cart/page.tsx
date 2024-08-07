@@ -3,14 +3,41 @@
 import Image from "next/image";
 import useCart from "@/lib/hooks/useCart";
 import { MinusCircle, PlusCircle, Trash } from "lucide-react";
+import { useUser } from "@clerk/nextjs";
+import { useRouter } from "next/navigation";
 
 const Cart = () => {
+  const router = useRouter();
+  const { user } = useUser();
   const cart = useCart();
   const total = cart.cartItems.reduce(
     (acc, cartItem) => acc + cartItem.item.price * cartItem.quantity,
     0
   );
   const totalRounded = parseFloat(total.toFixed(2));
+
+  const handleCheckout = async () => {
+    try {
+      if (!user) {
+        router.push("sign-in");
+      }
+      const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/checkout`, {
+        method: "POST",
+        body: JSON.stringify({ cartItems: cart.cartItems, customer }),
+      });
+      const data = await res.json();
+      window.location.href = data.url;
+    } catch (err) {
+      console.log("checkout_POST", err);
+    }
+  };
+
+  console.log(user);
+  const customer = {
+    clerkId: user?.id,
+    email: user?.emailAddresses[0].emailAddress,
+    name: user?.fullName,
+  };
 
   return (
     <div className="flex gap-20 py-16 px-10 max-lg:flex-col">
@@ -73,7 +100,10 @@ const Cart = () => {
           <span>Tổng</span>
           <span>{totalRounded.toLocaleString("vi-VN")} đ</span>
         </div>
-        <button className="border rounded-lg text-body-bold bg-white py-3 w-full hover:bg-black hover:text-white">
+        <button
+          className="border rounded-lg text-body-bold bg-white py-3 w-full hover:bg-black hover:text-white"
+          onClick={handleCheckout}
+        >
           Thanh toán
         </button>
       </div>
