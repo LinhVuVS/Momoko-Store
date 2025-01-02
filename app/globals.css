@@ -7,3 +7,14 @@ body,
 :root {
   height: 100%;
 }
+
+@font-face {
+  font-family: 'Kanit';
+  src: url('/font/Kanit-Regular.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+}
+
+* {
+  font-family: 'Kanit', sans-serif;
+}

@@ -1,0 +1,51 @@
+.item {
+    display: flex;
+    margin: 0 0 4px;  
+    cursor: pointer;
+}
+
+.social{
+    padding: 11px 36px 11px 0px;
+}
+
+.action{
+    display: flex;
+    align-items: center;
+    background-color: #ffffff; /* Light background color */
+    padding: 5px;
+    border-radius: 50px; /* Round edges for entire container */
+}
+
+.action input {
+    border: none;
+    outline: none;
+    padding: 10px;
+    border-radius: 50px;
+    font-size: 14px;
+    flex-grow: 1;
+    background-color: transparent;
+}
+
+.action button {
+    background-color: #2f5c47; /* Green button */
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 50px;
+    font-size: 14px;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out 0s;
+}
+
+.action button:hover {
+    border: solid 2px #2f6950;
+    background-color: transparent;
+    color: #2f6950;
+}
+
+.signupdesc{
+    text-align: left;
+    line-height: 30px;
+    font-size: 17px;
+    margin-bottom: 15px;
+}

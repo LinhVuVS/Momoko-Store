@@ -3,9 +3,9 @@ type CollectionType = {
     title: string;
     products: number;
     image: string;
-  };
-  
-  type ProductType = {
+};
+
+type ProductType = {
     _id: string;
     title: string;
     description: string;
@@ -19,28 +19,36 @@ type CollectionType = {
     colors: [string];
     createdAt: string;
     updatedAt: string;
-  };
-  
-  type UserType = {
+    [key: string]: any;
+};
+
+type UserType = {
     clerkId: string;
     wishlist: [string];
     createdAt: string;
     updatedAt: string;
-  };
-  
-  type OrderType = {
+};
+
+type OrderType = {
     shippingAddress: Object;
     _id: string;
     customerClerkId: string;
-    products: [OrderItemType]
+    products: [OrderItemType];
     shippingRate: string;
-    totalAmount: number
-  }
-  
-  type OrderItemType = {
+    totalAmount: number;
+};
+
+type OrderItemType = {
     product: ProductType;
     color: string;
     size: string;
     quantity: number;
     _id: string;
-  }
+};
+
+type BannerType = {
+    _id: string;
+    title: string;
+    description: string;
+    image: [string];
+};

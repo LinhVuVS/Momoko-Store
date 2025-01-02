@@ -1,19 +1,25 @@
+import Banner from "@/components/Banner";
 import Collections from "@/components/Collections";
-import ProductsList from "@/components/ProductsList";
-import Image from "next/image";
+import Footer from "@/components/Footer";
+import ProductList from "@/components/ProductsList";
+import { Separator } from "@/components/Separator";
+import "../globals.css";
+import Herosection from "@/components/Herosection";
+import FeatureSection from "@/components/FeatureSection";
+import FAQ from "@/components/FAQ";
 
 export default function Home() {
-  return (
-    <>
-      <Image
-        src="/banner.png"
-        alt="banner"
-        width={2000}
-        height={1000}
-        className="w-screen"
-      />
-      <Collections />
-      <ProductsList />
-    </>
-  );
+    return (
+        <>
+            <Banner />
+            <Collections />
+            <Herosection />
+            <ProductList />
+            <FeatureSection />
+            <FAQ />
+            <Footer />
+        </>
+    );
 }
+
+export const dynamic = "force-dynamic";

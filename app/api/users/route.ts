@@ -15,7 +15,7 @@ export const GET = async (req: NextResponse) => {
         
         let user = await User.findOne({clerkId: userId})
 
-        //Khi người dùng đăng nhập vào lần đầu tiên thì hệ thống sẽ tạo usser mới
+        //Khi người dùng đăng nhập vào lần đầu tiên thì hệ thống sẽ tạo user mới
         if(!user){
             user = await User.create({clerkId: userId});
             await user.save();
