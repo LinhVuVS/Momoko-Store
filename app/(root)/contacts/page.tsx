@@ -72,3 +72,5 @@ const Contact = () => {
 };
 
 export default Contact;
+
+export const dynamic = "force-dynamic";
