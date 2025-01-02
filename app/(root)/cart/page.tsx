@@ -114,10 +114,9 @@ const Cart = () => {
                 </div>
                 <button
                     className="border rounded-lg text-body-bold bg-white py-3 w-full hover:bg-[#2f6950] hover:text-white"
-                    onClick={!user ? () => router.push("sign-in") : handleCheckout}
-                    disabled={isLoading}
+                    onClick={handleCheckout}
                 >
-                    {isLoading ? "Đang xử lý..." : "Thanh toán"}
+                    Thanh toán
                 </button>
             </div>
         </div>
